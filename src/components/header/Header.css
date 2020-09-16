@@ -1,0 +1,32 @@
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+}
+.header__nav{
+    display: flex;
+    justify-content: space-evenly;
+}
+.header__link{
+    padding: 0 8px;
+    text-decoration: none;
+    color: black;
+}
+.header__link:first-child{
+    padding-left: 0px;
+}
+.header__link:last-child{
+    padding-right: 0px;
+}
+.header__basket{
+    display: flex;
+    align-items: center;
+}
+.header__basket:first-child{
+    padding-left: 4px;
+}
+.header__basket:last-child{
+    padding-right: 4px;
+}
