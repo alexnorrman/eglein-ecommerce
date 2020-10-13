@@ -3,39 +3,44 @@ export const initialState = {
     shoppingBag: [],
     wishlist: [],
     products: [],
+    loading: true,
 };
 //
 //selector
-export const getShoppingBagTotalPrice = (shoppingBag) => 
-    shoppingBag?.reduce((sum, item) => sum + (item.price * item.quantity),0);
+export const getShoppingBagTotalPrice = (shoppingBag, shippingCost) => 
+    shoppingBag?.reduce((sum, item) => sum + ((item.price * item.quantity) + shippingCost),0);
 
 export const getShoppingBagTotalItems = (shoppingBag) => 
     shoppingBag?.reduce((sum, item) => sum + item.quantity,0);
 
-export const getSpecificProduct = (products, id) => {
-    const indexExists = products.findIndex((item) => item.id ===id);
-    if(indexExists >= 0){
-        return products[indexExists];
-    }
-    else{
-        console.warn(`Can't find product (id: ${id})`)
-    }
-}
+
+export function getProductById (products, id){
+    return products.filter((product) => product.id === id);
+} 
+    
+
 
 
 function reducer(state, action) {
     console.log(action);
     let newShoppingBag;
     switch(action.type){
+        case "SET_ISLOADING":
+            return{
+                ...state,
+                loading: action.loading
+            }
         case "SET_USER":
             return{
                 ...state,
                 user: action.user
             }
-        case 'SET_PRODUCTS':
+        case 'SET_PRODUCT':
+            console.log("THISISHIHSIHS >>> ",  action.product)
             return{
                 ...state,
-                products: action.products
+                //products: action.products
+                products: [...state.products, action.product],
             }
         case 'ADD_TO_SHOPPING_BAG':
             
@@ -67,7 +72,6 @@ function reducer(state, action) {
                     shoppingBag: [...state.shoppingBag, action.item],
                 }
             }
-            
         case 'REMOVE_FROM_SHOPPING_BAG':
             //let newShoppingBag = [...state.shoppingBag];
             newShoppingBag = [...state.shoppingBag];

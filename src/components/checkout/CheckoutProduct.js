@@ -5,6 +5,8 @@ import { useStateValue } from '../StateProvider';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import Close from '@material-ui/icons/Close';
 
+
+
 function CheckoutProduct({id, title, description, collection, category, price, image, quantity}) {
     const [, dispatch] = useStateValue();
 

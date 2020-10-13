@@ -9,8 +9,11 @@ function Inspiration() {
 
     return (
         <div className="inspiration">
-            <h1>Inspiration</h1>
-            <Gallery margin={16} photos={inspirationPhotos} direction={"column"} />
+            <h1 style={{textAlign:"center", padding:"20px"}}>Inspiration</h1>
+            <div className="inspiration__gallery">
+                <Gallery margin={16} photos={inspirationPhotos} direction={"column"} />
+            </div>
+            
         </div>
     )
 }

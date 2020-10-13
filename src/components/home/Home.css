@@ -1,8 +1,38 @@
-.products{
+/*.products{
     display: grid;
-    width: 100%;
     grid-gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     text-decoration: none;
     color: black;
+    width: 80%;
+    margin: auto;
+}*/
+.home{
+    width: 80%;
+    margin: 100px auto;
+}
+.home h1 {
+    margin: 0;
+    padding: 0;
+}
+.products{
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 1rem; 
+    justify-content: space-between;
+    text-decoration: none;
+    color: black;
+    
+}
+.products a{
+
+    text-decoration: none;
+    color: black;
+
+}
+
+@media only screen and (max-width: 450px){
+    .products{
+        width: 100%;
+    }
 }

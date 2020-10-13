@@ -1,4 +1,7 @@
 .inspiration{
     margin: auto;
-    width: 60%;
+    width: 80%;
+}
+.inspiration__gallery{
+    margin: 0 -16px;
 }

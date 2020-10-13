@@ -1,45 +1,23 @@
 import React from 'react';
 import './Product.css';
 import { useStateValue } from '../StateProvider';
+import { getProductById } from '../../reducer';
 
 import LocalMall from "@material-ui/icons/LocalMall";
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import { light } from '@material-ui/core/styles/createPalette';
 
-function Product({id, name, description, collection, category, price, image}) {
-    const [, dispatch] = useStateValue();
-
-    const addToShoppingBag = () => {
-        dispatch({
-            type: 'ADD_TO_SHOPPING_BAG',
-            item: {
-                id: id,
-                name: name,
-                description: description,
-                collection: collection,
-                category: category,
-                price: price,
-                image: image,
-                quantity: 1,
-            }
-        })
-    };
-
+function Product({id}) {
+    const [{products}, dispatch] = useStateValue();
+    const product = getProductById(products,id)[0]
     return (
         <div className="product">
-            <img className="product__image" src={image} alt={name}></img>
-            
-            <div className="product__row">
-                <h2>{name}</h2>
-                <FavoriteBorderIcon/>
-            </div>
-            <div className="product__row">
-                <p className="product__price">
-                    <strong>{price}</strong>
-                    <small> kr</small>
-                </p>
-
-            </div>
-            
+            <img className="product__image" src={product.imageUrl[0]} alt={product.name}></img>
+            <h4>{product.collection}</h4>
+            <h2>{product.name}</h2>
+            <p className="product__price">
+                {product.price} kr
+            </p>
         </div>
     )
 }
